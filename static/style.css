@@ -1,0 +1,22 @@
+/*
+Flask CSS
+*/
+
+
+.img_centre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.apple {
+    text-align: left;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+

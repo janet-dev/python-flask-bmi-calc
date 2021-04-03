@@ -1,0 +1,72 @@
+<!-- HTML with Jinja2 templates for Python -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BMI Flask App</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <!-- link to pureCSS.io -->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" integrity="sha384-G9DpmGxRIF6tpgbrkZVcZDeIomEU22LgTguPAI739bbKytjPE/kHTK5YxjJAAEXC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
+    </head>
+
+
+    <body>
+
+        <img class="img_centre" src="./static/circle-python.png" alt="green tree python" width="250">
+
+        <div class="apple"><!-- apple div -->
+            <h1>Python BMI Calculator using Flask</h1>
+            <p>
+                Body Mass Index (BMI) is the weight (kg) divided by the height (m) squared.<br><br>
+                BMI = height / weight^2
+                <br><br>
+                This HTML page is built using Flask, which is a popular Python web framework,
+                meaning it is a third-party Python library used for developing web applications.
+                The calculations are done with the Python programming language.
+                <br><br>
+                It is styled using Pure.css from pureCSS.io, which is ridiculously tiny. The entire set of modules clocks in at 3.7KB* minified and gzipped. Crafted with mobile devices in mind,
+                it was important to keep file sizes small, and every line of CSS was carefully considered.
+                Pure builds on Normalize.css and provides layout and styling for native HTML elements, plus the most common UI components.
+                Pure is responsive out of the box, so elements look great on all screen sizes.
+                <br><br>
+                Thank you to Julian Sequeira from pybit.es and his free Udemy.com course "Python Flask for Beginners."
+            </p>
+
+            <!-- form that links to app. User inputs their name and it is POSTed back on the page -->
+            <div><!-- form div -->
+                <p>Please enter your details...</p>
+
+                <form class="pure-form" method="POST" action="/">
+                    Name:<br>
+                    <input type="text" class="pure-input-rounded" name="username"/><br>
+
+                    Weight (kg):<br>
+                    <input type="text" class="pure-input-rounded" name="user_kg"/><br>
+
+                    Height (m):<br>
+                    <input type="text" class="pure-input-rounded" name="user_m"/><br>
+
+                    <button type="submit" class="pure-button-primary">Submit</button>
+                </form>
+            </div><!-- form div END -->
+
+            <!-- Jinja2 allows us to insert Python with curly braces & percent signs
+            So, do NOT use these, even in comments, as they will be seen
+            & cause the dreaded Internal Server Error!-->
+
+            <div><!-- output div -->
+                <!-- checking if name exists -->
+                {% if name %}
+                    <p>Welcome {{name}}!</p>
+                    <p>Your weight is {{kg}} kg & your height is {{m}} m.</p>
+                    <p>Therefore your BMI is {{bmi}}!</p>
+                    <!-- 'name' in double curly braces is substituting in the user's name from the python app -->
+                {% endif %}
+            </div><!-- output div END -->
+        </div><!-- apple div END -->
+    </body>
+</html>
